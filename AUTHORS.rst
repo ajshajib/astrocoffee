@@ -10,4 +10,7 @@ Development Lead
 Contributors
 ------------
 
-None yet. Why not be the first?
+* Abhimat Gautam
+* Ryan T. Hamilton
+* Ian J. Crossfield
+* Nathaniel Ross

@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block navigation %}
+    <ul class="pages">
+        <li><a href="/">Current Articles</a></li>
+        <li><strong>Archive</strong></li>
+        <li><a href="/usefullinks/">Useful Links</a></li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <img src="{{ url_for('static', filename='images/HappyPaper_2x.png') }}"
+         srcset="{{ url_for('static', filename='images/HappyPaper_1x.png') }} 1x,
+                 {{ url_for('static', filename='images/HappyPaper_2x.png') }} 2x"
+         alt="Happy Paper!">
+    <center><h3>Archive page is in construction!</h3></center>
+{% endblock %}

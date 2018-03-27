@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block navigation %}
+    <ul class="pages">
+        <li><strong>Current Articles</strong></li>
+        <li><a href="/archive/">Archive</a></li>
+        <li><a href="/usefullinks/">Useful Links</a></li>
+    </ul>
+{% endblock %}
+
+{% block submission %}
+    <form method="post" class="submission" action="{{ url_for('submit_paper') }}">
+        <center><input type="text" name="article" maxlength="128" placeholder="Submit a URL or arXiv-ID" class="field"/></center>
+        <input type="submit" value="submit" name="submit" class="button"/>
+    </form>
+{% endblock %}
+
+{% block content %}
+    {% for paper in new_papers %}
+        <article class="block">
+            <div class="date small">{{ paper.date_extended|strftime }}</div>
+            <div class="links small">[ {{ paper.sources|safe }} ]</div>
+            <h3><a href="{{ paper.url }}">{{ paper.title }}</a></h3>
+            <div class="authors small">{{ paper.author|safe }}</div>
+            <div id="abstract"><p>{{ paper.abstract }}</p></div>
+            {% if paper.volunteer != '' %}
+                <!-- p class="small"><a href="http://coffee.astro.ucla.edu/volunteer/volunteer.php?ID=https://arxiv.org/abs/1803.06853">Volunteer to discuss</a><br-->
+                    <!-- a href="http://coffee.astro.ucla.edu/discussed/discussed.php?ID=https://arxiv.org/abs/1803.06853">Mark paper as discussed</a-->
+                <!--/p-->
+            {% else %}
+            <p class="small">Volunteer: {{ paper.volunteer }}</p>
+            {% endif %}
+        </article>
+    {% else %}
+        <center><p><strong>No papers submitted yet.</strong></p></center>
+        <img src="{{ url_for('static', filename='images/SadPaper_2x.png') }}"
+         srcset="{{ url_for('static', filename='images/SadPaper_1x.png') }} 1x,
+                 {{ url_for('static', filename='images/SadPaper_2x.png') }} 2x"
+         alt="Sad Paper!">
+    {% endfor %}
+
+    {% if discussed_papers %}
+        <hr>
+        <center><p><strong>Papers already discussed</strong></p></center>
+        {% for paper in discussed_papers %}
+            <article class="block">
+                <div class="date small">{{ paper.date_extended|strftime }}</div>
+                <div class="links small">[ {{ paper.sources|safe }} ]</div>
+                <h3><a href="{{ paper.url }}">{{ paper.title }}</a></h3>
+                <div class="authors small">{{ paper.author|safe }}</div>
+                <div id="abstract"><p>{{ paper.abstract }}</p></div>
+                {% if paper.volunteer != '' %}
+                    <!--p class="small"><a href="http://coffee.astro.ucla.edu/volunteer/volunteer.php?ID=https://arxiv.org/abs/1803.06853">Volunteer to discuss</a><br-->
+                        <!-- a href="http://coffee.astro.ucla.edu/discussed/discussed.php?ID=https://arxiv.org/abs/1803.06853">Mark paper as discussed</a-->
+                    <!--/p-->
+                {% else %}
+                <p class="small">Volunteer: {{ paper.volunteer }}</p>
+                {% endif %}
+            </article>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

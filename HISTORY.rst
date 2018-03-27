@@ -3,7 +3,8 @@
 History
 -------
 
-3.0.0 (2018-03-13)
+0.0.1 (2018-03-26)
 ++++++++++++++++++
 
-* First release on PyPI.
+* Working version with minimal features.
+* Supports only arXiv url/ID.

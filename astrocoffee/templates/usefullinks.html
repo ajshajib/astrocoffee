@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block navigation %}
+    <ul class="pages">
+        <li><a href="/">Current Articles</a></li>
+        <li><a href="/archive/">Archive</a></li>
+        <li><strong>Useful Links</strong></li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <article class="block">
+        <!-- <ul style="columns: 2; list-style-type: none;"> -->
+        <ul>
+            <li><a href="http://voxcharta.org/tools/recent-popular-papers/">Vox Charta: Top 100 Papers of Last 30 Days</a></li>
+            <li><a href="http://astrobites.org/">Astrobites</a></li>
+            <li><a href="http://aasnova.org/">AAS Nova</a></li>
+            <li><a href="https://twitter.com/awesome_ph">@Awesome_Ph</a></li>
+            <li><a href="http://particle-astro.blogspot.com/">Today in Particle Astrophysics</a></li>
+            <li><a href="http://arxiv.org/archive/astro-ph/">Astro-ph</a></li>
+            <li><a href="http://adsabs.harvard.edu/abstract_service.html">Astronomy ADS</a></li>
+        </ul>
+    </article>
+    <img src="{{ url_for('static', filename='images/HappyPaper_2x.png') }}"
+         srcset="{{ url_for('static', filename='images/HappyPaper_1x.png') }} 1x,
+                 {{ url_for('static', filename='images/HappyPaper_2x.png') }} 2x"
+         alt="Happy Paper!">
+{% endblock %}

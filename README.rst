@@ -27,4 +27,5 @@ Quickstart
 .. code-block:: bash
 
     $ export FLASK_APP=astrocoffee
+    $ flask initdb
     $ flask run

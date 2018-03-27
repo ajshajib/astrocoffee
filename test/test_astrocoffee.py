@@ -2,7 +2,7 @@
 Tests for `astrocoffee` module.
 """
 import pytest
-#from astrocoffee import astrocoffee
+from astrocoffee import astrocoffee, web, paper
 
 
 class TestAstrocoffee(object):
