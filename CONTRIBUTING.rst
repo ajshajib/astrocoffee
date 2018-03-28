@@ -67,7 +67,7 @@ local development.
 
     $ git checkout -b name-of-your-bugfix-or-feature
 
-Now you can make your changes locally.
+ The branch names should be in 'bugfix/fix-a-bug' or 'feature/add-a-feature' format. Now you can make your changes locally.
 
 4. When you're done making changes, check that your changes pass style and unit
    tests, including testing other Python versions with tox::
@@ -86,6 +86,33 @@ To get tox, just pip install it.
 
 .. _Fork: https://github.com/Nekroze/astrocoffee/fork
 
+Styling Guidelines
+------------------
+
+AstroCoffee is written in Python and we want to keep it Pythonic. Generally, we try
+to follow PEP 8_, 257_, and 287_ as closely as possible. A few key points,
+that need to be emphasized or are beyond these PEPs, are
+
+1. Use full words for variable and function/method names with words separated by underscore. Function/method names must start with a verb.
+2. Class variables and functions/methods that are not intended for use outside of the class/module must be named with a starting underscore.
+3. No Python lines must be more than 79 characters in length.
+4. Commit messages should be in this format::
+
+    Write commit subject line
+
+    This is an example commit message. Start the commit subject line with
+    a verb. All the verbs are in command form, e.g. fix, add; not in other
+    forms, e.g. fixes, added. The subject line has no period at the end and
+    is followed by a blank line. Add a detailed description about what the
+    commit does in a paragraph after that. No lines in the whole commit
+    message must be more than 72 characters in length.
+
+5. When in doubt, follow the styling guidelines of the existing code.
+
+.. _8: https://www.python.org/dev/peps/pep-0008/
+.. _257: https://www.python.org/dev/peps/pep-0257/
+.. _287: https://www.python.org/dev/peps/pep-0287/
+
 Pull Request Guidelines
 -----------------------
 
@@ -99,7 +126,6 @@ Before you submit a pull request, check that it meets these guidelines:
    Check https://travis-ci.org/ajshajib/astrocoffee 
    under pull requests for active pull requests or run the ``tox`` command and
    make sure that the tests pass for all supported Python versions.
-
 
 Tips
 ----

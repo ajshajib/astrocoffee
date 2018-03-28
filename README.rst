@@ -20,6 +20,8 @@ Installation
 ------------
 .. code-block:: bash
 
+    $ git clone https://github.com/ajshajib/astrocoffee.git
+    $ cd astrocoffee
     $ python setup.py develop --user
 
 Quickstart
@@ -28,4 +30,5 @@ Quickstart
 
     $ export FLASK_APP=astrocoffee
     $ flask initdb
+    $ flask mkuser
     $ flask run

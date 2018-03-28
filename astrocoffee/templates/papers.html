@@ -3,14 +3,17 @@
 {% block navigation %}
     <ul class="pages">
         <li><strong>Current Articles</strong></li>
-        <li><a href="/archive/">Archive</a></li>
-        <li><a href="/usefullinks/">Useful Links</a></li>
+        <li><a href="{{ url_for('show_archive') }}">Archive</a></li>
+        <li><a href="{{ url_for('show_useful_links') }}">Useful Links</a></li>
     </ul>
 {% endblock %}
 
 {% block submission %}
     <form method="post" class="submission" action="{{ url_for('submit_paper') }}">
-        <center><input type="text" name="article" maxlength="128" placeholder="Submit a URL or arXiv-ID" class="field"/></center>
+        <center>
+            <input type="text" name="article" maxlength="128"
+                   placeholder="Submit a URL or arXiv-ID" class="field"/>
+        </center>
         <input type="submit" value="submit" name="submit" class="button"/>
     </form>
 {% endblock %}
@@ -23,13 +26,18 @@
             <h3><a href="{{ paper.url }}">{{ paper.title }}</a></h3>
             <div class="authors small">{{ paper.author|safe }}</div>
             <div id="abstract"><p>{{ paper.abstract }}</p></div>
-            {% if paper.volunteer != '' %}
-                <!-- p class="small"><a href="http://coffee.astro.ucla.edu/volunteer/volunteer.php?ID=https://arxiv.org/abs/1803.06853">Volunteer to discuss</a><br-->
-                    <!-- a href="http://coffee.astro.ucla.edu/discussed/discussed.php?ID=https://arxiv.org/abs/1803.06853">Mark paper as discussed</a-->
-                <!--/p-->
-            {% else %}
-            <p class="small">Volunteer: {{ paper.volunteer }}</p>
-            {% endif %}
+            <p class="small">
+                {% if paper.volunteer and paper.volunteer != '' %}
+                    Volunteer: {{ paper.volunteer }} <br/>
+                {% else %}
+                    <!--a href="">Volunteer to discuss</a><br/-->
+                {% endif %}
+                {% if session.logged_in %}
+                    <a href="{{ url_for('mark_discussed', paper_id=paper.id) }}">
+                        Mark paper as discussed
+                    </a>
+                {% endif %}
+            </p>
         </article>
     {% else %}
         <center><p><strong>No papers submitted yet.</strong></p></center>
@@ -40,7 +48,7 @@
     {% endfor %}
 
     {% if discussed_papers %}
-        <hr>
+        <hr/>
         <center><p><strong>Papers already discussed</strong></p></center>
         {% for paper in discussed_papers %}
             <article class="block">
@@ -49,12 +57,16 @@
                 <h3><a href="{{ paper.url }}">{{ paper.title }}</a></h3>
                 <div class="authors small">{{ paper.author|safe }}</div>
                 <div id="abstract"><p>{{ paper.abstract }}</p></div>
-                {% if paper.volunteer != '' %}
-                    <!--p class="small"><a href="http://coffee.astro.ucla.edu/volunteer/volunteer.php?ID=https://arxiv.org/abs/1803.06853">Volunteer to discuss</a><br-->
-                        <!-- a href="http://coffee.astro.ucla.edu/discussed/discussed.php?ID=https://arxiv.org/abs/1803.06853">Mark paper as discussed</a-->
-                    <!--/p-->
+                <p class="small">
+                {% if paper.volunteer and paper.volunteer != '' %}
+                    Volunteer: {{ paper.volunteer }} <br/>
                 {% else %}
-                <p class="small">Volunteer: {{ paper.volunteer }}</p>
+                    <!--a href="">Volunteer to discuss</a><br/-->
+                {% endif %}
+                {% if session.logged_in %}
+                    <a href="{{ url_for('unmark_discussed', paper_id=paper.id) }}">
+                        Mark paper as not discussed
+                    </a>
                 {% endif %}
             </article>
         {% endfor %}

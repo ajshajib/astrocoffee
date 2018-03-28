@@ -2,12 +2,10 @@
 Installation
 ============
 
-At the command line either via easy_install or pip::
+At the command line:
 
-    $ easy_install astrocoffee
-    $ pip install astrocoffee
+.. code-block:: bash
 
-Or, if you have virtualenvwrapper installed::
-
-    $ mkvirtualenv astrocoffee
-    $ pip install astrocoffee
+    $ git clone https://github.com/ajshajib/astrocoffee.git
+    $ cd astrocoffee
+    $ python setup.py develop --user

@@ -467,6 +467,14 @@ footer.wrap {
     padding-bottom: 2em;
 }
 
+footer hr {
+    width: 20%;
+    margin: 1em auto;
+    height: 2px;
+    border: 0 none;
+    background-color: #DDD;
+}
+
 .flashes .success {
     color: #00cc00;
 }

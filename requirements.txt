@@ -2,3 +2,5 @@ wheel>=0.22
 flask>=0.12
 requests>=2.18.4
 beautifulsoup4>=4.6.0
+click
+flask-bcrypt

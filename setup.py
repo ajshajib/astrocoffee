@@ -23,7 +23,7 @@ history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 
 setup(
     name='astrocoffee',
-    version='0.0.1',
+    version='0.0.2',
     description='Web application for organizing astro-ph coffee discussion.',
     long_description=readme + '\n\n' + doclink + '\n\n' + history,
     author='Anowar J. Shajib',

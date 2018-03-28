@@ -5,14 +5,16 @@ in a SubmittedPaper object. This module exports the following function:
 
 `get_paper`: returns a SubmittedPaper from a url/arXiv ID.
 
-Example:
-.. code-block::
+:Example:
+
+.. code-block:: python
 
     url = 'https://arxiv.org/abs/1604.03939'
     submitted_paper = get_paper(url)
 
-To-do:
-- complete the other functions to handle non-arXiv urls.
+:To-do:
+
+- Complete the rest of the functions to handle non-arXiv urls.
 
 """
 

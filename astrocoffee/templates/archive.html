@@ -2,9 +2,9 @@
 
 {% block navigation %}
     <ul class="pages">
-        <li><a href="/">Current Articles</a></li>
+        <li><a href="{{ url_for('show_papers') }}">Current Articles</a></li>
         <li><strong>Archive</strong></li>
-        <li><a href="/usefullinks/">Useful Links</a></li>
+        <li><a href="{{ url_for('show_useful_links') }}">Useful Links</a></li>
     </ul>
 {% endblock %}
 
