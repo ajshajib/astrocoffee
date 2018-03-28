@@ -60,6 +60,16 @@
 		</center>
 
 		{% block submission %}{% endblock %}
+
+		{% with messages = get_flashed_messages(with_categories=true) %}
+  			{% if messages %}
+    			<div class="flashes">
+    			{% for category, message in messages %}
+      				<p class="{{ category }}">{{ message }}</p><br/>
+    			{% endfor %}
+    			</div>
+  			{% endif %}
+		{% endwith %}
 	</header>
 
 	<div class="content wrap">

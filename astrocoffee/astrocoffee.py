@@ -16,6 +16,7 @@ from flask import Flask, request, session, g, redirect, url_for, abort, \
 
 from .web import get_paper
 
+
 app = Flask(__name__, instance_relative_config=True)
 
 app.config.from_object('config')
@@ -125,10 +126,13 @@ def submit_paper():
                     paper.subject,
                     paper.sources])
         db.commit()
-        return redirect(url_for('show_papers'))
+        flash('Your submission was successfully added. Thanks for '
+              'advancing knowledge!', 'success')
     else:
-        pass
+        flash('Error processing the URL or arXiv-ID! Please make sure '
+              'it\'s valid.', 'error')
 
+    return redirect(url_for('show_papers'))
 
 @app.route('/archive/')
 def show_archive():

@@ -149,22 +149,25 @@ class SubmittedPaper(Paper):
         :return: Url of the webpage if it exists, or `None`.
         :rtype: str
         """
-        request = requests.get(url)
-        if request.status_code == 200:
-            self.html = request.text
-            return url
-        else:
-            if not url.startswith('http://'):
-                request = requests.get('http://' + url)
-                if request.status_code == 200:
-                    self.html = request.text
-                    return 'http://' + url
-                else:
-                    if not url.startswith('http://www.'):
-                        request = requests.get('http://www.' + url)
-                        if request.status_code == 200:
-                            self.html = request.text
-                            return 'http://www.' + url
+        try:
+            request = requests.get(url)
+            if request.status_code == 200:
+                self.html = request.text
+                return url
+            else:
+                if not url.startswith('http://'):
+                    request = requests.get('http://' + url)
+                    if request.status_code == 200:
+                        self.html = request.text
+                        return 'http://' + url
+                    else:
+                        if not url.startswith('http://www.'):
+                            request = requests.get('http://www.' + url)
+                            if request.status_code == 200:
+                                self.html = request.text
+                                return 'http://www.' + url
+        except:
+            self.errors = 'invalid url'
 
         return None
 

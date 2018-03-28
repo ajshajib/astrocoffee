@@ -466,3 +466,11 @@ footer.wrap {
     padding-top: 2em;
     padding-bottom: 2em;
 }
+
+.flashes .success {
+    color: #00cc00;
+}
+
+.flashes .error {
+    color: #cc0000;
+}
